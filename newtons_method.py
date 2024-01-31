@@ -5,18 +5,18 @@ def sec(x):
     return 1 / cos(x) 
 
 def f(x):
-    return np.tan(x) - 1/x
+    return 1/x
 
 def df(x):
-    return sec(x)**2 + 1/x**2
+    return 1/x**2
 
-def newton_method(function: function, derivative: function, tolerance, max_iterations):
+def newton_method_answer(function, derivative, tolerance, max_iterations):
     x = 1
-    while isinstance(function, function) == KeyError:
-        x +=1
+    while f(x) == ZeroDivisionError:
+        x += 1
     for _ in range(max_iterations):
-        x_new = x - f(x) / df(x)
+        x_new = x - function(x) / derivative(x)
         if abs(x_new - x) < tolerance:
             return round(x_new, 4)
         x = x_new
-    return None
+    return x
